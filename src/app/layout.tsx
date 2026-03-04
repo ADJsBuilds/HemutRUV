@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth dark">
-      <body className={`${headingFont.variable} ${bodyFont.variable} font-sans antialiased text-foreground bg-background selection:bg-brand-500 selection:text-brand-dark`}>
+      <body className={`${headingFont.variable} ${bodyFont.variable} font-sans antialiased text-foreground bg-background selection:bg-pastel-orange selection:text-black-3`}>
         {children}
       </body>
     </html>

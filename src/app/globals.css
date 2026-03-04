@@ -1,52 +1,46 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* Hemut Brand Colors */
+  --color-white: #ffffff;
+  --color-lavender: #e7e7e7;
+  --color-white-smoke: #f2f2f2;
+  --color-white-smoke-1: #f5f5f5;
+  --color-gainsboro: #dadada;
+  --color-dark-gray: #999999;
+  --color-dark-gray-1: #a7a7a7;
+  --color-dark-gray-2: #b5aeae;
+  --color-dark-gray-3: #1b1b1b;
+  --color-pastel-orange: #f4b623;
+  --color-pastel-orange-1: #f7c948;
+  --color-indian-red: #b07a1d;
+  --color-black: #000000;
+  --color-black-1: #020202;
+  --color-black-2: #0b0b0b;
+  --color-black-3: #0f0f0f;
+  --color-black-4: #111111;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
-  /* Hemut Brand Palette */
-  --color-brand-yellow: #FFD33B;
-  --color-brand-dark: #121212;
-  --color-brand-slate: #24282E;
-  --color-brand-50: #FFF9E6;
-  /* Soft yellow for faint backgrounds */
-  --color-brand-100: #FFF0B3;
-  /* Light yellow */
-  --color-brand-500: #FFD33B;
-  /* Core Brand Yellow */
-  --color-brand-600: #E6B800;
-  /* Darker yellow for active states */
-  --color-brand-900: #24282E;
-  /* Brand Slate */
-
   --color-surface: var(--surface);
   --color-border: var(--border);
 
   --font-sans: var(--font-body);
   --font-heading: var(--font-heading);
+  --font-tobias: var(--font-heading);
+  --font-oldschool: var(--font-body);
 }
 
 :root {
-  --background: #121212;
-  /* Brand Dark Default */
+  --background: #000000;
   --foreground: #ffffff;
-  /* White text Default */
-  --surface: #24282E;
-  /* Brand Slate */
-  --border: #333A44;
-  /* Slightly lighter border */
-}
+  --surface: #1b1b1b;
+  --border: #f2f2f2;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #121212;
-    /* Brand Dark */
-    --foreground: #ffffff;
-    --surface: #24282E;
-    /* Brand Slate */
-    --border: #333A44;
-    /* Slightly lighter border */
-  }
+  /* 3 Gradients */
+  --gradient-linear: linear-gradient(#a3a2a2, #000000);
+  --gradient-linear-1: linear-gradient(#ffd33b, #ffd33b, #ffd33b);
+  --gradient-linear-2: linear-gradient(#a3a2a2, #000000);
 }
 
 body {
@@ -77,5 +71,130 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #cbd5e1;
+  background: var(--color-white-smoke);
+}
+
+/* Typography Utilities */
+.font-tobias {
+  font-family: var(--font-heading), sans-serif;
+}
+
+.font-oldschool-grotesk {
+  font-family: var(--font-body), sans-serif;
+}
+
+.text-12 {
+  font-size: 12px;
+}
+
+.text-13 {
+  font-size: 13px;
+}
+
+.text-14 {
+  font-size: 14px;
+}
+
+.text-15 {
+  font-size: 15px;
+}
+
+.text-16 {
+  font-size: 16px;
+}
+
+.text-17 {
+  font-size: 17px;
+}
+
+.text-19 {
+  font-size: 19px;
+}
+
+.text-20 {
+  font-size: 20px;
+}
+
+.text-21 {
+  font-size: 21px;
+}
+
+.text-24 {
+  font-size: 24px;
+}
+
+.text-41 {
+  font-size: 41px;
+}
+
+.text-48 {
+  font-size: 48px;
+}
+
+.text-49 {
+  font-size: 49px;
+}
+
+.text-54 {
+  font-size: 54px;
+}
+
+.text-57 {
+  font-size: 57px;
+}
+
+.text-62 {
+  font-size: 62px;
+}
+
+.text-72 {
+  font-size: 72px;
+}
+
+.font-300 {
+  font-weight: 300;
+}
+
+.font-400 {
+  font-weight: 400;
+}
+
+.font-600 {
+  font-weight: 600;
+}
+
+.font-700 {
+  font-weight: 700;
+}
+
+.leading-24 {
+  line-height: 24px;
+}
+
+.leading-28 {
+  line-height: 28.16px;
+}
+
+.leading-55 {
+  line-height: 55.2px;
+}
+
+.leading-60 {
+  line-height: 60.48px;
+}
+
+.leading-79 {
+  line-height: 79.2px;
+}
+
+.tracking-0288 {
+  letter-spacing: 0.288px;
+}
+
+.tracking-0832 {
+  letter-spacing: 0.832px;
+}
+
+.tracking-72 {
+  letter-spacing: 7.2px;
 }
