@@ -1,9 +1,6 @@
 import "server-only";
 
-import { drizzle } from "drizzle-orm/postgres-js";
 import postgres, { type Sql } from "postgres";
-
-import * as schema from "./schema";
 
 const connectionString = process.env.DIRECT_URL ?? process.env.DATABASE_URL;
 
@@ -13,7 +10,6 @@ if (!connectionString) {
 
 const globalForDb = globalThis as typeof globalThis & {
   __pgClient__?: Sql;
-  __drizzleDb__?: ReturnType<typeof drizzle>;
 };
 
 const pgClient =
@@ -23,12 +19,9 @@ const pgClient =
     prepare: false,
   });
 
-const db = globalForDb.__drizzleDb__ ?? drizzle(pgClient, { schema });
-
 if (process.env.NODE_ENV !== "production") {
   globalForDb.__pgClient__ = pgClient;
-  globalForDb.__drizzleDb__ = db;
 }
 
-export { db };
+export { pgClient as db };
 

@@ -2,7 +2,6 @@
 
 import { z } from "zod";
 import { db } from "@/lib/db/client";
-import { investorInterest } from "@/lib/db/schema";
 
 const formSchema = z.object({
     fullName: z.string().min(2, "Name is required"),
@@ -11,7 +10,7 @@ const formSchema = z.object({
     city: z.string().min(1, "City is required"),
     country: z.string().min(1, "Country is required"),
     referrer: z.string().optional(),
-    amount: z.number().min(5000, "Minimum investment is typically $5,000 for RUVs"),
+    amount: z.number(),
     capitalType: z.enum(["Personal", "Fund/Family Office"]),
     background: z.string().min(10, "Please provide a brief background"),
     howCanHelp: z.string().optional(),
@@ -82,7 +81,40 @@ export async function submitInterestForm(
     };
 
     try {
-        await db.insert(investorInterest).values(normalizedData);
+        await db`
+            INSERT INTO investor_interest (
+                full_name,
+                email,
+                phone,
+                city,
+                country,
+                referrer,
+                amount_usd,
+                capital_type,
+                background,
+                how_can_help,
+                citizenship,
+                not_restricted_country,
+                is_accredited,
+                consent_to_store
+            )
+            VALUES (
+                ${normalizedData.fullName},
+                ${normalizedData.email},
+                ${normalizedData.phone},
+                ${normalizedData.city},
+                ${normalizedData.country},
+                ${normalizedData.referrer},
+                ${normalizedData.amountUsd},
+                ${normalizedData.capitalType},
+                ${normalizedData.background},
+                ${normalizedData.howCanHelp},
+                ${normalizedData.citizenship},
+                ${normalizedData.notRestrictedCountry},
+                ${normalizedData.isAccredited},
+                ${normalizedData.consentToStore}
+            )
+        `;
     } catch (error) {
         console.error("Failed to store investor interest submission:", error);
         return {

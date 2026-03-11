@@ -18,8 +18,6 @@ CREATE TABLE "investor_interest" (
 	CONSTRAINT "investor_interest_amount_min_check" CHECK ("investor_interest"."amount_usd" >= 5000),
 	CONSTRAINT "investor_interest_capital_type_check" CHECK ("investor_interest"."capital_type" in ('Personal', 'Fund/Family Office'))
 );
---> statement-breakpoint
-CREATE INDEX "investor_interest_created_at_idx" ON "investor_interest" USING btree ("created_at" DESC NULLS LAST);
---> statement-breakpoint
-CREATE INDEX "investor_interest_email_idx" ON "investor_interest" USING btree ("email");
 
+CREATE INDEX "investor_interest_created_at_idx" ON "investor_interest" USING btree ("created_at" DESC NULLS LAST);
+CREATE INDEX "investor_interest_email_idx" ON "investor_interest" USING btree ("email");
